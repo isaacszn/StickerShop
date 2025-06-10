@@ -79,6 +79,13 @@ header {
   padding: 25px;
 }
 
+.feautured-packs-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .feautured-packs h2 {
   text-align: center;
   margin: 15px auto 40px auto;
@@ -93,21 +100,20 @@ header {
 
 .pack {
   background-color: var(--light-blue);
-  width: 300px;
-  height: 440px;
+  width: auto;
+  height: auto;
   padding: 1.5rem;
   border: 3px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: auto;
+  margin: 20px;
 }
 
-
 .pack-sample {
-  width: 70px;
-  height: 85px;
+  width: 50px;
+  height: 50px;
 }
 
 .price {
@@ -141,7 +147,7 @@ header {
 }
 
 .img-stack {
-  width: 99%;
+  width: 60%;
   height: auto;
   margin: 15px;
   display: flex;
@@ -170,7 +176,7 @@ header {
   font-weight: bolder;
   position: fixed;
   top: 30vh;
-  left: 10vw;
+  left: 8%;
   animation: ease 1.5s pop;
 }
 
@@ -180,6 +186,21 @@ header {
 
 .blur {
   filter: blur(2px);
+}
+
+.btns-flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.continue-btn {
+  background-color: var(--light-green);
+  width: 100px;
+  height: 50px;
+  border: 1.2px solid black;
+  font: inherit;
+  cursor: pointer;
 }
 
 .cancel-btn {
@@ -199,13 +220,6 @@ header {
 
 .d-none {
   display: none;
-}
-
-.loader {
-  border: 2.5px solid white;
-  border-radius: 2px;
-  width: 50px;
-  animation: ease 0.20s rotate infinite;
 }
 
 .nav-links {
@@ -228,14 +242,14 @@ header {
   transition: all ease 1.2s;
 }
 
-.menu li a {          
+.menu li a {
   color: black;
   font-size: 1.2rem;
   font-weight: bolder;
 }
 
 .menu li {
-  list-style-type: none;  
+  list-style-type: none;
   margin: 1.2rem;
 }
 
@@ -262,19 +276,22 @@ header {
   margin: 10px;
 }
 
+.red {
+  color: red;
+}
+
+.email {
+  font: inherit;
+  height: 35px;
+  width: 75%;
+  border: thin solid var(--light-green);
+  border-radius: 0;
+  text-align: center;
+}
+
 /* 
   Animations 
 */
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes pop {
   0% {
     transform: scale(30%);
@@ -300,7 +317,8 @@ header {
     filter: brightness(98%);
   }
 
-  .menu-btn, .menu {
+  .menu-btn,
+  .menu {
     display: none;
   }
 
@@ -325,9 +343,9 @@ header {
   .nav-links li {
     list-style-type: none;
   }
-  
+
   .simple-dialog {
     width: 70%;
-    left: 15vw; 
+    left: 15vw;
   }
 }
