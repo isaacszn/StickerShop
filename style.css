@@ -1,4 +1,4 @@
-/*
+/* 
   Fonts 
 */
 @font-face {
@@ -175,7 +175,7 @@ header {
   flex-direction: column;
   font-weight: bolder;
   position: fixed;
-  top: 30vh;
+  top: 15vh;
   left: 8%;
   animation: ease 1.5s pop;
 }
@@ -281,6 +281,15 @@ header {
 }
 
 .email {
+  font: inherit;
+  height: 35px;
+  width: 75%;
+  border: thin solid var(--light-green);
+  border-radius: 0;
+  text-align: center;
+}
+
+.name-of-pack {
   font: inherit;
   height: 35px;
   width: 75%;

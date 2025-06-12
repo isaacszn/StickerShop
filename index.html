@@ -38,7 +38,7 @@
           <br>
           <span class="price">NGN300</span>
           <br>
-          <button class="purchase-btn">Buy <span class="bold">N300</span></button>
+          <button class="purchase-btn" data-pack="funny-pack">Buy <span class="bold">N300</span></button>
         </section>
 
         <section class="pack">
@@ -54,7 +54,7 @@
           <br>
           <span class="price">NGN300</span>
           <br>
-          <button class="purchase-btn">Buy <span class="bold">N300</span></button>
+          <button class="purchase-btn" data-pack="lol">Buy <span class="bold">N300</span></button>
         </section>
 
         <section class="pack">
@@ -70,7 +70,7 @@
           <br>
           <span class="price">NGN300</span>
           <br>
-          <button class="purchase-btn">Buy <span class="bold">N300</span></button>
+          <button class="purchase-btn" data-pack="naija-stickers">Buy <span class="bold">N300</span></button>
         </section>
         <section class="pack">
           <h2 class="pack-name">Naija Vibez</h2><br>
@@ -85,7 +85,7 @@
           <br>
           <span class="price">NGN300</span>
           <br>
-          <button class="purchase-btn">Buy <span class="bold">N300</span></button>
+          <button class="purchase-btn" data-pack="naija-vibez">Buy <span class="bold">N300</span></button>
         </section>
 
         <section class="pack">
@@ -101,18 +101,20 @@
           <br>
           <span class="price">NGN300</span>
           <br>
-          <button class="purchase-btn">Buy <span class="bold">N300</span></button>
+          <button class="purchase-btn" data-pack="naija4u">Buy <span class="bold">N300</span></button>
         </section>
-        <h2>More sticker packs coming...😉</h2>
       </section>
+      <h2>More sticker packs coming...😉</h2>
     </main>
   </section>
   <section class="simple-dialog d-none">
     <h2>We'll need some details from you</h2><br>
     <label for="email">Email<span class="red">*</span>:</label><br>
-    <input type="email" class="email" placeholder="example@stickershop.com" required><br><br>
+    <input type="email" class="email" placeholder="example@stickershop.com" required><br>
+    <label for="pack-name">Pack name<span class="red">*</span>:</label><br>
+    <input type="text" class="name-of-pack" placeholder="Funny Pack" required><br><br>
     <div class="btns-flex">
-      <button class="continue-btn">Continue <span class="bold">-></span></button>
+      <button class="continue-btn">Continue <span>-></span></button>
       <button class="cancel-btn">Cancel <span class="bold">×</span></button>
     </div>
   </section>
