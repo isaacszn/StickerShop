@@ -60,7 +60,6 @@ const payWithPaystack = (email, selectedPack) => {
       }
       const selectedPackName = selectedPack
       const downloadLink = downloadLinks[selectedPackName]
-      alert(downloadLink)
       window.location.href = `/thankyou.html?link=${downloadLink}`
       // console.log(`Download link: ${downloadLink}`)
       // alert('Payment successful. Ref: ' + response.reference);
