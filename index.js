@@ -1,9 +1,10 @@
+let selectedPack = null
+
 // Purchase functionality
 document.querySelectorAll('.purchase-btn').forEach(button => {
   button.addEventListener('click', () => {
-    let pack = button.dataset.pack
-    // let amount = button.dataset.amount
-    console.log(`Pack name: ${pack}`)
+    selectedPack = button.dataset.pack
+    document.querySelector('.name-of-pack').value = selectedPack.trim()
     document.querySelector('.whole-page').classList.add('blur')
     document.querySelector('.simple-dialog').classList.remove('d-none')
     document.querySelector('.simple-dialog').classList.add('d-block')
@@ -21,8 +22,11 @@ document.querySelector('.cancel-btn').addEventListener('click', () => {
 document.querySelector('.continue-btn').addEventListener('click', () => {
   // Call Paystack for payments
   const email = document.querySelector('.email').value
-  const packName = document.querySelector('.name-of-pack').value
-  payWithPaystack(email, packName)
+  if (email && selectedPack) {
+    payWithPaystack(email, selectedPack)
+  } else {
+    // Do nothing
+  }
 })
 
 // Show menu functionality
@@ -40,15 +44,24 @@ document.querySelector('.close-btn').addEventListener('click', () => {
 })
 
 // PAYSTACK 
-const payWithPaystack = (email, packName) => {
+const payWithPaystack = (email, selectedPack) => {
   let handler = PaystackPop.setup({
     key: 'pk_test_9404edbedc7515e6cff50a989dbd8694c760f5de', // get from Paystack dashboard
     email: email,
     amount: 30000, // in kobo (₦300.00)
     currency: 'NGN',
     callback: function(response) {
-      window.location.href = '/thankyou.html'
-      console.log(packName)
+      let downloadLinks = {
+        'funny-pack': 'https://stickersforss.vercel.app/stickers/funny-pack.zip',
+        'lol': 'https://stickersforss.vercel.app/stickers/lol.zip',
+        'naija-stickers': 'https://stickersforss.vercel.app/stickers/naija-stickers.zip',
+        'naija-vibez': 'https://stickersforss.vercel.app/stickers/naija-vibez.zip',
+        'naija4u': 'https://stickersforss.vercel.app/stickers/naija4u.zip'
+      }
+      const selectedPackName = selectedPack
+      const downloadLink = downloadLinks[selectedPackName]
+      window.location.href = `/thankyou.html?link=${downloadLink}`
+      // console.log(`Download link: ${downloadLink}`)
       // alert('Payment successful. Ref: ' + response.reference);
     },
     onClose: function() {

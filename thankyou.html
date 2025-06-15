@@ -14,8 +14,18 @@
   </nav>
   <main>
     <h1>Thanks for your purchase, Dear User!! 🎉🙏</h1><br><br>
-    <p>Your sticker pack is ready for download, click the link here: <a href="">Download sticker pack</a></p>
+    <p>Your sticker pack is ready for download, click the link here: <a href="" id="anker" download>Download sticker pack</a></p>
   </main>
+  <script>
+    document.body.addEventListener('load', () => {
+      // Logic for getting the link via params
+      const params = new URLSearchParams(window.location.search)
+      const downloadLink = params.get('link')
+      console.log(downloadLink)
+      // Logic for adding download link to the anker element
+      document.querySelector('#anker').href = downloadLink
+    })
+  </script>
 </body>
 
 </html>
