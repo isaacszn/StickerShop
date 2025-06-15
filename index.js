@@ -52,11 +52,11 @@ const payWithPaystack = (email, selectedPack) => {
     currency: 'NGN',
     callback: function(response) {
       let downloadLinks = {
-        'funny-pack': 'https://stickersforss.vercel.app/stickers/funny-pack.zip',
-        'lol': 'https://stickersforss.vercel.app/stickers/lol.zip',
-        'naija-stickers': 'https://stickersforss.vercel.app/stickers/naija-stickers.zip',
-        'naija-vibez': 'https://stickersforss.vercel.app/stickers/naija-vibez.zip',
-        'naija4u': 'https://stickersforss.vercel.app/stickers/naija4u.zip'
+        'funny-pack': 'https://stickerpacksforss.vercel.app/sticker-packs/funny-pack.zip',
+        'lol': 'https://https://stickerpacksforss.vercel.app/sticker-packs/lol.zip',
+        'naija-stickers': 'https://stickerpacksforss.vercel.app/sticker-packs/naija-stickers.zip',
+        'naija-vibez': 'https://stickerpacksforss.vercel.app/sticker-packs/naija-vibez.zip',
+        'naija4u': 'https://stickerpacksforss.vercel.app/sticker-packs/naija4u.zip'
       }
       const selectedPackName = selectedPack
       const downloadLink = downloadLinks[selectedPackName]
