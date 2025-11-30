@@ -12,12 +12,12 @@
     <header class="logo">
         <h2><a href="#" class="header-a">StickerShop</a></h2>
     </header>
-    
+
     <main>
         <h1>Sign up</h1>
         <p class="little-description">Create an account for <span class="tomato-red">StickerShop</span> to start
             purchasing your favourite WhatsApp stickers <!-- Smile emoji --></p>
-        <form>
+        <form class="signup-form">
             <label for="full-name">Fullname:</label>
             <input type="text" name="full-name" id="full-name" placeholder="Enter your fullname" required>
             <label for="email">Your email:</label>
@@ -26,9 +26,16 @@
             <input type="password" name="password" id="password" placeholder="Minimum of 6 characters required"
                 required>
             <button>Sign up</button>
-            <p>Already have an account? <a href="/login.html">Login</a></p>
+            <p>Already have an account? <a href="/login.html">Log in</a></p>
         </form>
     </main>
+
+    <section class="dialog-box hide">
+        <span class="message">Sign up successful!</span>
+        <span class="hide-btn">&times;</span>
+    </section>
+
+    <script src="/assets/scripts/signup.js"></script>
 </body>
 
 </html>
