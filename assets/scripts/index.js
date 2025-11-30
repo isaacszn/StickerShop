@@ -46,9 +46,9 @@ document.querySelector('.close-btn').addEventListener('click', () => {
 // PAYSTACK 
 const payWithPaystack = (email, selectedPack) => {
   let handler = PaystackPop.setup({
-    key: 'pk_test_9404edbedc7515e6cff50a989dbd8694c760f5de', // get from Paystack dashboard
+    key: 'pk_test_9404edbedc7515e6cff50a989dbd8694c760f5de',
     email: email,
-    amount: 30000, // in kobo (₦300.00)
+    amount: 30000, // in kobo (but ₦300.00 in Naira)
     currency: 'NGN',
     callback: function(response) {
       let downloadLinks = {
@@ -61,8 +61,6 @@ const payWithPaystack = (email, selectedPack) => {
       const selectedPackName = selectedPack
       const downloadLink = downloadLinks[selectedPackName]
       window.location.href = `/thankyou.html?link=${downloadLink}`
-      // console.log(`Download link: ${downloadLink}`)
-      // alert('Payment successful. Ref: ' + response.reference);
     },
     onClose: function() {
       alert('Payment window closed.');

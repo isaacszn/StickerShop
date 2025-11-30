@@ -1,0 +1,360 @@
+/* 
+  Fonts 
+*/
+@font-face {
+  font-family: Poppins;
+  src: url(/assets/fonts/Poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+  font-family: Playwright;
+  src: url(/assets/fonts/Playwright/PlaywriteIN-Regular.ttf);
+}
+
+@font-face {
+  font-family: Barriecito;
+  src: url(/assets/fonts/Barriecito/Barriecito-Regular.ttf);
+}
+
+:root {
+  /* Color */
+  --light-blue: #B0E0E6;
+  --light-green: #98FB98;
+  --light-pink: #FFB6C1;
+  --tomato-red: #FF6347;
+  --vibrant-yellow: #FFD700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 1rem "Poppins", sans-serif;
+  background-color: #F8F8F8;
+}
+
+.logo {
+  display: block;
+  font-family: "Playwright", sans-serif;
+  color: var(--tomato-red);
+  margin: 10px;
+  padding: 5px;
+  text-decoration: none;
+}
+
+header {
+  height: 40vh;
+  width: 90vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  font: 1.7rem "Barriecito", sans-serif;
+}
+
+.menu-btn {
+  font: 1.7rem monospace;
+  position: fixed;
+  top: -18px;
+  right: -18px;
+  width: 80px;
+  height: 100px;
+  padding: 50px;
+  border-radius: 45%;
+  background-color: var(--light-green);
+  border: 1.5px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.feautured-packs {
+  background-color: var(--vibrant-yellow);
+  min-height: 100vh;
+  padding: 25px;
+}
+
+.feautured-packs-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.feautured-packs h2 {
+  text-align: center;
+  margin: 15px auto 40px auto;
+  font-family: "Barriecito", sans-serif;
+}
+
+.pack-name {
+  text-align: center;
+  margin: 5px auto;
+  font-family: "Barriecito", sans-serif;
+}
+
+.pack {
+  background-color: var(--light-blue);
+  width: auto;
+  height: auto;
+  padding: 1.5rem;
+  border: 3px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+}
+
+.pack-sample {
+  width: 50px;
+  height: 50px;
+}
+
+.price {
+  font-family: monospace;
+  font-weight: bolder;
+}
+
+.green {
+  color: var(--light-green);
+  font-weight: bolder;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 1px;
+}
+
+.purchase-btn {
+  background-color: #2A994C;
+  color: white;
+  width: 150px;
+  height: 50px;
+  padding: 10px;
+  border: 1.6px solid black;
+  font: inherit;
+  font-weight: bolder;
+  margin-bottom: 1.5rem;
+}
+
+.purchase-btn:active,
+.purchase-btn:hover,
+.purchase-btn:focus {
+  filter: brightness(80%);
+}
+
+.img-stack {
+  width: 60%;
+  height: auto;
+  margin: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.bold {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+.simple-dialog {
+  color: black;
+  background-color: var(--tomato-red);
+  border: 2px solid black;
+  width: 80%;
+  height: auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bolder;
+  position: fixed;
+  top: 15vh;
+  left: 8%;
+  animation: ease 1.5s pop;
+}
+
+.simple-dialog h2 {
+  font-family: "Barriecito", sans-serif;
+}
+
+.blur {
+  filter: blur(2px);
+}
+
+.btns-flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.continue-btn {
+  background-color: var(--light-green);
+  width: 100px;
+  height: 50px;
+  border: 1.2px solid black;
+  font: inherit;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: var(--vibrant-yellow);
+  width: 100px;
+  height: 50px;
+  border: 1.2px solid black;
+  font: inherit;
+  cursor: pointer;
+}
+
+.d-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.d-none {
+  display: none;
+}
+
+.nav-links {
+  display: none;
+}
+
+.menu {
+  background-color: var(--light-green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1.2px solid black;
+  border-radius: 10px;
+  width: 70vw;
+  margin: auto;
+  position: fixed;
+  left: 15vw;
+  transition: all ease 1.2s;
+}
+
+.menu li a {
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+.menu li {
+  list-style-type: none;
+  margin: 1.2rem;
+}
+
+.hide {
+  top: -42vh;
+}
+
+.show {
+  top: 30vh;
+}
+
+.close-btn {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  font-weight: bolder;
+  border: 0;
+  font-size: 1.3rem;
+  margin: 10px;
+}
+
+.red {
+  color: red;
+}
+
+.email {
+  font: inherit;
+  height: 35px;
+  width: 75%;
+  border: thin solid var(--light-green);
+  border-radius: 0;
+  text-align: center;
+}
+
+.name-of-pack {
+  font: inherit;
+  height: 35px;
+  width: 75%;
+  border: thin solid var(--light-green);
+  border-radius: 0;
+  text-align: center;
+}
+
+/* 
+  Animations 
+*/
+@keyframes pop {
+  0% {
+    transform: scale(30%);
+  }
+
+  100% {
+    transform: scale(102%);
+  }
+}
+
+@media screen and (min-width: 481px) {
+  .pack {
+    margin: auto;
+  }
+
+  header {
+    height: 20vh;
+  }
+
+  .pack:active,
+  .pack:hover,
+  .pack:focus {
+    filter: brightness(98%);
+  }
+
+  .menu-btn,
+  .menu {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    border: 1px solid black;
+    background-color: var(--light-green);
+    width: auto;
+    height: auto;
+    padding: 5px;
+  }
+
+  .nav-links li a {
+    color: black;
+    font-size: 1.2rem;
+  }
+
+  .nav-links li {
+    list-style-type: none;
+  }
+
+  .simple-dialog {
+    width: 70%;
+    left: 15vw;
+  }
+}

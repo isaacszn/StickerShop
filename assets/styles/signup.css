@@ -1,0 +1,135 @@
+/* 
+  Fonts 
+*/
+@font-face {
+    font-family: Poppins;
+    src: url(/assets/fonts/Poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+    font-family: Playwright;
+    src: url(/assets/fonts/Playwright/PlaywriteIN-Regular.ttf);
+}
+
+@font-face {
+    font-family: Barriecito;
+    src: url(/assets/fonts/Barriecito/Barriecito-Regular.ttf);
+}
+
+:root {
+    /* Color */
+    --light-blue: #B0E0E6;
+    --light-green: #98FB98;
+    --light-pink: #FFB6C1;
+    --tomato-red: #FF6347;
+    --vibrant-yellow: #FFD700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: 1rem "Poppins", sans-serif;
+    background-color: #F8F8F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+header {
+    height: auto;
+    width: 100vw;
+    margin: auto;
+    text-align: center;
+}
+
+.header-a {
+    color: inherit;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+main {
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--vibrant-yellow);
+    padding: 15px;
+    border: thin solid black;
+}
+
+a {
+    color: var(--tomato-red);
+    font-weight: bold;
+    font-family: monospace;
+}
+
+.little-description {
+    font: 1.2rem "Barriecito", sans-serif;
+    font-weight: bold;
+    margin: 30px auto;
+    width: 90%;
+}
+
+.tomato-red {
+    color: var(--tomato-red);
+}
+
+.logo {
+    display: block;
+    font-family: "Playwright", sans-serif;
+    color: var(--tomato-red);
+    margin: 10px;
+    padding: 5px;
+    text-decoration: none;
+}
+
+button {
+    display: block;
+    background-color: #2A994C;
+    color: white;
+    width: 300px;
+    height: 40px;
+    padding: 5px;
+    border: 1.6px solid black;
+    font: inherit;
+    font-weight: bolder;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+}
+
+button:active,
+button:hover,
+button:focus {
+    filter: brightness(80%);
+}
+
+input {
+    display: block;
+    margin: 10px auto;
+    width: 100%;
+    height: 35px;
+    padding: 5px;
+    border: 2px solid var(--tomato-red);
+    border-radius: 5px;
+    font: inherit;
+}
+
+input:focus {
+    outline: 0;
+}
+
+@media screen and (min-width: 760px) {
+    input {
+        width: 450px;
+    }
+}
