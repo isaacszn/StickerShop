@@ -185,6 +185,11 @@ input[type="text"] {
     display: flex;
 }
 
+.disabled {
+    user-select: none;
+    opacity: 70%;
+}
+
 @media screen and (min-width: 760px) {
     input {
         width: 450px;
