@@ -25,6 +25,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
       console.log("Logged in successfully");
       dialogBox.classList.remove("hide");
       dialogBox.classList.add("show");
+      dialogBox.classList.remove("error");
       dialogBox.classList.add("success");
       message.textContent = "Logged in successfully. You'll be redirected to the main page!!"; // Add success emoji
       btn.textContent = originalContent;
@@ -34,12 +35,13 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     console.log(error.message);
     dialogBox.classList.remove("hide");
     dialogBox.classList.add("show");
+    dialogBox.classList.remove("success");
     dialogBox.classList.add("error");
     if (error.message === "Failed to fetch") {
       message.textContent =
         "No internet connection. Turn on Wi-Fi or mobile data!!"; // Add warning emoji
     } else {
-      message.textContent = error.message;
+      message.textContent = error.message; // Work on triming the message response to what I want ("data" property)  
     }
     btn.textContent = originalContent;
     btn.classList.remove("disabled");
