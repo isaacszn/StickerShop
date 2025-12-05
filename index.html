@@ -5,11 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StickerShop - Purchase WhatsApp stickers at a very low price</title>
-  <link rel="stylesheet" href="/assets/styles/dashboard.css">
+  <link rel="stylesheet" href="/assets/styles/index.css">
 </head>
 
 <body>
   <section class="whole-page">
+    <!-- Menu for desktop -->
     <section>
       <h2><a href="#" class="logo">StickerShop</a></h2>
       <span class="menu-btn">&#9776;</span>
@@ -18,6 +19,9 @@
         <li><a href="buymecoffee.html" target="_blank">Buymecoffee ☕</a></li>
         <li><a href="more.html" target="_blank">More</a></li>
       </ul>
+    </section>
+    <section class="greeting">
+      <div><h2>What's up, <span id="user-name">Isaac</span>!!</h2></div>
     </section>
     <header>
       <h1>Get <span class="green">WhatsApp</span> stickers for any mood 😜</h1>
@@ -113,12 +117,13 @@
     <label for="email">Email<span class="red">*</span>:</label><br>
     <input type="email" class="email" placeholder="example@stickershop.com" required><br>
     <label for="pack-name">Pack name<span class="red">*</span>:</label><br>
-    <input type="text" class="name-of-pack" placeholder="naija-stickers"><br><br>
+    <input type="text" class="name-of-pack" placeholder="naija-stickers" required readonly><br><br>
     <div class="btns-flex">
       <button class="continue-btn">Continue <span>-></span></button>
       <button class="cancel-btn">Cancel <span class="bold">×</span></button>
     </div>
   </section>
+  <!-- Menu for mobile -->
   <section class="menu hide">
     <span><button class="close-btn">x</button></span>
     <ul>

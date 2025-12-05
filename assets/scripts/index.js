@@ -8,6 +8,7 @@ document.querySelectorAll(".purchase-btn").forEach((button) => {
     document.querySelector(".whole-page").classList.add("blur");
     document.querySelector(".simple-dialog").classList.remove("d-none");
     document.querySelector(".simple-dialog").classList.add("d-block");
+    document.querySelector(".email").value = "";
   });
 });
 
