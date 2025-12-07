@@ -17,16 +17,19 @@ document.querySelector(".cancel-btn").addEventListener("click", () => {
   document.querySelector(".whole-page").classList.remove("blur");
   document.querySelector(".simple-dialog").classList.add("d-none");
   document.querySelector(".simple-dialog").classList.remove("d-block");
+  document.querySelector(".email").classList.remove("error");
 });
 
 // Continue functionality
 document.querySelector(".continue-btn").addEventListener("click", () => {
-  // Call Paystack for payments
+  // Call Paystack for payment
   const email = document.querySelector(".email").value;
   if (email) {
+    email.classList.remove("error");
     payWithPaystack(email, selectedPack);
   } else {
-    // Do nothing
+    const email = document.querySelector(".email");
+    email.classList.add("error");
   }
 });
 
@@ -35,10 +38,12 @@ document.querySelector(".menu-btn").addEventListener("click", () => {
   document.querySelector(".whole-page").classList.add("blur");
   const menu = document.querySelector(".menu");
   const list = document.querySelector("#menu-list");
-  const closeBtn = document.querySelector("#close-button");
+  const closeBtn = document.querySelector(".close-btn");
+  const menuBtn = document.querySelector(".menu-btn");
   menu.style.width = "70vw";
   menu.style.padding = "1rem";
   list.classList.remove("d-none");
+  menuBtn.style.display = "none";
   closeBtn.style.display = "flex";
 });
 
@@ -47,14 +52,38 @@ document.querySelector(".close-btn").addEventListener("click", () => {
   document.querySelector(".whole-page").classList.remove("blur");
   const menu = document.querySelector(".menu");
   const list = document.querySelector("#menu-list");
-  const closeBtn = document.querySelector("#close-button");
+  const closeBtn = document.querySelector(".close-btn");
+  const menuBtn = document.querySelector(".menu-btn");
   menu.style.width = "0";
   menu.style.padding = "0";
   list.classList.add("d-none");
   closeBtn.style.display = "none";
+  menuBtn.style.display = "flex";
 });
 
-// PAYSTACK
+// Log out user functionality 
+document.querySelector("#logout-btn").addEventListener("click", () => {
+  const logoutBtn = document.querySelector("#logout-btn");
+  logoutBtn.style.opacity = "80%";
+  logoutBtn.style.userSelect = "none";
+  logoutBtn.style.cursor = "wait";
+  logoutBtn.textContent = "Logging out...";
+  // Implement Cocobase to log user out
+  console.log("Logging out");
+});
+
+// Log out user functionality 
+document.querySelector(".logout-btn").addEventListener("click", () => {
+  const logoutBtn = document.querySelector(".logout-btn");
+  logoutBtn.style.opacity = "80%";
+  logoutBtn.style.userSelect = "none";
+  logoutBtn.style.cursor = "wait";
+  logoutBtn.textContent = "Logging out...";
+  // Implement Cocobase to log user out
+  console.log("Logging out");
+});
+
+// Initializing Paystack for payment
 const payWithPaystack = (email, selectedPack) => {
   let handler = PaystackPop.setup({
     key: "pk_test_9404edbedc7515e6cff50a989dbd8694c760f5de",
