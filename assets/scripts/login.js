@@ -7,7 +7,8 @@ const db = new Cocobase({
 
 document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
-
+  e.stopPropagation();
+  
   const btn = document.querySelector("button");
   const originalContent = btn.textContent;
   btn.textContent = "Logging in...";
@@ -17,7 +18,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
   const formData = new FormData(e.target);
   const email = formData.get("email");
   const password = formData.get("password");
-
+  
   // Implement Cocobase here to login user
   try {
     await db.login(email, password);
@@ -27,9 +28,13 @@ document.querySelector("form").addEventListener("submit", async (e) => {
       dialogBox.classList.add("show");
       dialogBox.classList.remove("error");
       dialogBox.classList.add("success");
-      message.textContent = "Logged in successfully. You'll be redirected to the main page!!"; // Add success emoji
+      message.textContent = "✅ Logged in successfully. You'll be redirected to the main page!!";
       btn.textContent = originalContent;
       btn.classList.remove("disabled");
+      // Redirect user to the main app
+      setTimeout(() => {
+        window.location.href = "/index.html";
+      }, 3 * 1000);
     }
   } catch (error) {
     console.log(error.message);
@@ -39,9 +44,9 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     dialogBox.classList.add("error");
     if (error.message === "Failed to fetch") {
       message.textContent =
-        "No internet connection. Turn on Wi-Fi or mobile data!!"; // Add warning emoji
+        "⚠️ No internet connection. Turn on Wi-Fi or mobile data!!";
     } else {
-      message.textContent = error.message; // Work on triming the message response to what I want ("data" property)  
+      message.textContent = `❌ ${error.message}`; // Work on triming the message response to what I want ("data" property)  
     }
     btn.textContent = originalContent;
     btn.classList.remove("disabled");
@@ -50,6 +55,6 @@ document.querySelector("form").addEventListener("submit", async (e) => {
 
 document.querySelector(".hide-btn").addEventListener("click", () => {
   const dialogBox = document.querySelector(".dialog-box");
-  dialogBox.classList.remove("show");  
+  dialogBox.classList.remove("show");
   dialogBox.classList.add("hide");
 });

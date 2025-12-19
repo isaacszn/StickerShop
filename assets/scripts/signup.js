@@ -5,10 +5,11 @@ const db = new Cocobase({
   projectId: "ac8337c1-e1ee-44b5-b210-f27986e3fc6c",
 });
 
-console.log(db)
+// console.log(db);
 
 document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
+  e.stopPropagation();
 
   const btn = document.querySelector("button");
   const originalContent = btn.textContent;
@@ -30,9 +31,13 @@ document.querySelector("form").addEventListener("submit", async (e) => {
       dialogBox.classList.add("show");
       dialogBox.classList.remove("error");
       dialogBox.classList.add("success");
-      message.textContent = "Account created successfully. You'll be redirected to the main page!!"; // Add success emoji
+      message.textContent = "✅ Account created successfully. You'll be redirected to the main page!!";
       btn.textContent = originalContent;
       btn.classList.remove("disabled");
+      // Redirect user to the main app
+      setTimeout(() => {
+        window.location.href = "/index.html";
+      }, 3 * 1000);
     }
   } catch (error) {
     console.log(error.message);
@@ -42,9 +47,9 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     dialogBox.classList.add("error");
     if (error.message === "Failed to fetch") {
       message.textContent =
-        "No internet connection. Turn on Wi-Fi or mobile data!!"; // Add warning emoji
+        "⚠️ No internet connection. Turn on Wi-Fi or mobile data!!";
     } else {
-      message.textContent = error.message; // Work on triming the message response to what I want ("data" property) 
+      message.textContent = `❌ ${error.message}`; // Work on triming the message response to what I want ("data" property) 
     }
     btn.textContent = originalContent;
     btn.classList.remove("disabled");

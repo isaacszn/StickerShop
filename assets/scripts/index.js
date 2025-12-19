@@ -1,5 +1,18 @@
 let selectedPack = null;
 
+// Greet user functionality
+document.body.onload = () => {
+  const greetingBox = document.querySelector('#greeting-');
+  
+  let greetings = ['Hola', 'Hi', 'Hello', 'Good Day', 'Ahoy', 'Wagwan', 'What\'s up?', 'Howdy', 'Yo', 'How far', 'Ele way?'];
+  let min = 0;
+  let max = 9;
+  let index = Math.floor(Math.random() * (max - min + 1)) + min;
+  let greeting = greetings[index];
+ 
+  greetingBox.textContent = greeting;
+};
+
 // Purchase functionality
 document.querySelectorAll(".purchase-btn").forEach((button) => {
   button.addEventListener("click", () => {
@@ -90,23 +103,19 @@ const payWithPaystack = (email, selectedPack) => {
     email: email,
     amount: 30000, // in kobo (but ₦300.00 in Naira)
     currency: "NGN",
-    callback: function (response) {
+    callback: function(response) {
       let downloadLinks = {
-        "funny-pack":
-          "https://stickerpacksforss.vercel.app/sticker-packs/funny-pack.zip",
+        "funny-pack": "https://stickerpacksforss.vercel.app/sticker-packs/funny-pack.zip",
         lol: "https://https://stickerpacksforss.vercel.app/sticker-packs/lol.zip",
-        "naija-stickers":
-          "https://stickerpacksforss.vercel.app/sticker-packs/naija-stickers.zip",
-        "naija-vibez":
-          "https://stickerpacksforss.vercel.app/sticker-packs/naija-vibez.zip",
-        naija4u:
-          "https://stickerpacksforss.vercel.app/sticker-packs/naija4u.zip",
+        "naija-stickers": "https://stickerpacksforss.vercel.app/sticker-packs/naija-stickers.zip",
+        "naija-vibez": "https://stickerpacksforss.vercel.app/sticker-packs/naija-vibez.zip",
+        naija4u: "https://stickerpacksforss.vercel.app/sticker-packs/naija4u.zip",
       };
       const selectedPackName = selectedPack;
       const downloadLink = downloadLinks[selectedPackName];
       window.location.href = `/thankyou.html?link=${downloadLink}`;
     },
-    onClose: function () {
+    onClose: function() {
       alert("Payment window closed.");
     },
   });
