@@ -37,8 +37,14 @@ body {
   margin-top: 150px;
 }
 
+h3 {
+  font-family: "Barriecito", sans-serif;
+}
+
 .logo {
-  display: block;
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center;
   font-family: "Playwright", sans-serif;
   color: var(--tomato-red);
   margin: 0;
@@ -66,6 +72,11 @@ header {
   margin-bottom: 60px;
 }
 
+footer {
+  margin-top: 120px;
+  text-align: center;
+}
+
 .get-started-btn {
   background-color: var(--tomato-red);
   padding: 15px;
@@ -73,8 +84,8 @@ header {
   border: 1px solid black;
   border-radius: 0;
   font-weight: bold;
-  width: 80%;
-  margin: 8px;
+  width: 100%;
+  margin: 8px auto;
   color: white;
 }
 
@@ -85,7 +96,7 @@ header {
   border: 1px solid black;
   border-radius: 0;
   font-weight: bold;
-  width: 80%;
+  width: 95%;
 }
 
 .greeting {
@@ -111,6 +122,17 @@ header {
   user-select: none;
   cursor: pointer;
   z-index: 150;
+}
+
+#menu-list {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+
+.feature {
+  padding-bottom: 20px;
+  border-bottom: thin solid black;
+  margin: 20px 10px;
 }
 
 main {
@@ -169,6 +191,8 @@ main h2 {
 }
 
 .menu {
+  font-family: "Poppins", sans-serif !important;
+  font-weight: bold;
   background-color: var(--light-green);
   border-right: 1.2px solid black;
   width: 0;
@@ -223,6 +247,13 @@ main h2 {
 .red {
   color: red;
 }
+
+.link {
+  font: 1rem monospace;
+  font-weight: bold;
+  color: var(--tomato-red);
+}
+
 @media screen and (min-width: 1024px) {
   body {
     margin-top: 130px;

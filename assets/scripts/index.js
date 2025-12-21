@@ -2,7 +2,7 @@ let selectedPack = null;
 
 // Greet user functionality
 document.body.onload = () => {
-  const greetingBox = document.querySelector('#greeting-');
+  const greetingBox = document.querySelector('#greeting-box');
   
   let greetings = ['Hola', 'Hi', 'Hello', 'Good Day', 'Ahoy', 'Wagwan', 'What\'s up?', 'Howdy', 'Yo', 'How far', 'Ele way?'];
   let min = 0;

@@ -25,3 +25,13 @@ document.querySelector(".close-btn").addEventListener("click", () => {
   closeBtn.style.display = "none";
   menuBtn.style.display = "flex";
 });
+
+// Go to sign up page functionality
+document.querySelector(".get-started-btn").addEventListener("click", () => {
+  window.location.href = '/signup.html';
+});
+
+// Go to log in page functionality
+document.querySelector(".login-btn").addEventListener("click", () => {
+  window.location.href = '/login.html';
+});
