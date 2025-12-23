@@ -1,3 +1,10 @@
+import { Cocobase } from "https://unpkg.com/cocobase@1.2.1/dist/index.js";
+
+const db = new Cocobase({
+  apiKey: "rGg8piI-LB2uMJsh7dfWnJ72T2mZzIRGZcfdD1XP",
+  projectId: "ac8337c1-e1ee-44b5-b210-f27986e3fc6c",
+});
+
 let selectedPack = null;
 
 // Greet user functionality
@@ -11,6 +18,13 @@ document.body.onload = () => {
   let greeting = greetings[index];
  
   greetingBox.textContent = greeting;
+
+  getUserData();
+};
+
+const getUserData = () => {
+  // Call on Cocobase to get the current user's data (name)
+  console.log("Running Cocobase");
 };
 
 // Purchase functionality
@@ -39,6 +53,7 @@ document.querySelector(".continue-btn").addEventListener("click", () => {
   const email = document.querySelector(".email").value;
   if (email) {
     email.classList.remove("error");
+    // Now when a purchase is made save the exact purchased sticker in the user's purchased stickers collection with Cocobase
     payWithPaystack(email, selectedPack);
   } else {
     const email = document.querySelector(".email");
@@ -75,7 +90,7 @@ document.querySelector(".close-btn").addEventListener("click", () => {
 });
 
 // Log out user functionality 
-document.querySelector("#logout-btn").addEventListener("click", () => {
+document.querySelector("#logout-btn").addEventListener("click", async () => {
   const logoutBtn = document.querySelector("#logout-btn");
   logoutBtn.style.opacity = "80%";
   logoutBtn.style.userSelect = "none";
@@ -83,10 +98,12 @@ document.querySelector("#logout-btn").addEventListener("click", () => {
   logoutBtn.textContent = "Logging out...";
   // Implement Cocobase to log user out
   console.log("Logging out");
+  await db.logout();
+  window.location.href = "/signup.html";
 });
 
 // Log out user functionality 
-document.querySelector(".logout-btn").addEventListener("click", () => {
+document.querySelector(".logout-btn").addEventListener("click", async () => {
   const logoutBtn = document.querySelector(".logout-btn");
   logoutBtn.style.opacity = "80%";
   logoutBtn.style.userSelect = "none";
@@ -94,6 +111,8 @@ document.querySelector(".logout-btn").addEventListener("click", () => {
   logoutBtn.textContent = "Logging out...";
   // Implement Cocobase to log user out
   console.log("Logging out");
+  await db.logout();
+  window.location.href = "/signup.html";
 });
 
 // Initializing Paystack for payment

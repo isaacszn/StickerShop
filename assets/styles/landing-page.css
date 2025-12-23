@@ -31,6 +31,10 @@
   box-sizing: border-box;
 }
 
+button {
+  cursor: pointer;
+}
+
 body {
   font: 1rem "Poppins", sans-serif;
   background-color: #F8F8F8;
@@ -124,15 +128,10 @@ footer {
   z-index: 150;
 }
 
-#menu-list {
-  font-family: "Poppins", sans-serif;
-  font-weight: bold;
-}
-
 .feature {
   padding-bottom: 20px;
   border-bottom: thin solid black;
-  margin: 20px 10px;
+  margin: 20px 3rem;
 }
 
 main {

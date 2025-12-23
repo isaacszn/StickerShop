@@ -9,13 +9,56 @@
 </head>
 
 <body>
-    <nav>
-        <h1><a href="#" class="logo">StickerShop</a></h1>
-    </nav>
-    <main>
-        <p class="header">Purchased stickers</p>
-        <p class="little-description">These are the list of all the sticker pack(s) you've purchased.</p>
-    </main>
+    <section class="whole-page">
+        <!-- Menu for desktop -->
+        <section>
+            <h2><a href="#" class="logo">StickerShop</a></h2>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tutorial.html">How to use StickerShop</a></li>
+                <li><a href="purchased-stickers.html">Purchased stickers</a></li>
+                <li><a href="report-issue.html">Report issue</a></li>
+                <button id="logout-btn">Log out <!-- Log out icon --></button>
+            </ul>
+        </section>
+        <header>
+            <h2>These are the list of all sticker packs you've purchased.</h2>
+        </header>
+        <main class="packs">
+            <h2>Purchased Packs</h2>
+            <section class="packs-flex">
+                <section class="pack">
+                    <h2 class="pack-name">Funny Pack</h2><br>
+                    <p class="bold">15 stickers</p>
+                    <br>
+                    <div class="img-stack">
+                        <img src="/assets/sticker-packs/funny-pack/STK-20241214-WA0016.webp" alt="Funny 1"
+                            class="pack-sample">
+                        <img src="/assets/sticker-packs/funny-pack/STK-20241220-WA0012.webp" alt="Funny 2"
+                            class="pack-sample">
+                        <img src="/assets/sticker-packs/funny-pack/STK-20250105-WA0000.webp" alt="Funny 3"
+                            class="pack-sample">
+                        <img src="/assets/sticker-packs/funny-pack/STK-20241230-WA0003.webp" alt="Funny 4"
+                            class="pack-sample">
+                    </div>
+                    <br>
+                    <span class="price">NGN300</span>
+                </section>
+            </section>
+        </main>
+    </section>
+    <!-- Menu for mobile -->
+    <section class="menu">
+        <ul id="menu-list" class="d-none">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tutorial.html">How to use StickerShop</a></li>
+            <li><a href="purchased-stickers.html">Purchased stickers</a></li>
+            <li><a href="report-issue.html">Report issue</a></li>
+            <button class="logout-btn">Log out <!-- Log out icon --></button>
+        </ul>
+    </section>
+    <span class="menu-btn">&#9776;</span>
+    <span class="close-btn">&times;</span>
 
     <script src="/assets/scripts/purchased-stickers.js" type="module"></script>
 </body>

@@ -9,19 +9,47 @@
 </head>
 
 <body>
-    <nav>
-        <h1><a href="#" class="logo">StickerShop</a></h1>
-    </nav>
-    <main>
-        <form>
-            <p>We'd like to improve <span class="highlight">StickerShop</span> to your satisfaction. Send any issues, bug experienced on your usage, or any feature you'd like being added to <span class="highlight">StickerShop</span>.</p>
-            <label for="full-name">Full name:</label>
-            <input type="text" name="full-name" id="full-name" placeholder="Your full name" required>
-            <label for="report-message">Write issue or bug experienced or any improvement suggestion:</label>
-            <textarea name="report-message" id="report-message" cols="30" rows="10" placeholder="I really love StickerShop!!!" required></textarea>
-            <button>Send &rarr;</button>
-        </form>
-    </main>
+    <section class="whole-page">
+        <!-- Menu for desktop -->
+        <section>
+            <h2><a href="#" class="logo">StickerShop</a></h2>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tutorial.html">How to use StickerShop</a></li>
+                <li><a href="purchased-stickers.html">Purchased stickers</a></li>
+                <li><a href="report-issue.html">Report issue</a></li>
+                <button id="logout-btn">Log out <!-- Log out icon --></button>
+            </ul>
+        </section>
+
+        <main>
+            <form>
+                <p>We'd like to improve <span class="highlight">StickerShop</span> to your satisfaction. Send any
+                    issues,
+                    bug experienced on your usage, or any feature you'd like being added to <span
+                        class="highlight">StickerShop</span>.</p>
+                <label for="full-name">Full name:</label>
+                <input type="text" name="full-name" id="full-name" placeholder="Your full name" required>
+                <label for="report-message">Write issue or bug experienced or any improvement suggestion:</label>
+                <textarea name="report-message" id="report-message" cols="30" rows="10"
+                    placeholder="I really love StickerShop!!!" required></textarea>
+                <button class="form-btn">Send &rarr;</button>
+            </form>
+        </main>
+    </section>
+
+    <!-- Menu for mobile -->
+    <section class="menu">
+        <ul id="menu-list" class="d-none">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tutorial.html">How to use StickerShop</a></li>
+            <li><a href="purchased-stickers.html">Purchased stickers</a></li>
+            <li><a href="report-issue.html">Report issue</a></li>
+            <button class="logout-btn">Log out <!-- Log out icon --></button>
+        </ul>
+    </section>
+    <span class="menu-btn">&#9776;</span>
+    <span class="close-btn">&times;</span>
 
     <script src="/assets/scripts/report-issue.js" type="module"></script>
 </body>
