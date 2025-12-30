@@ -8,23 +8,60 @@ const db = new Cocobase({
 let selectedPack = null;
 
 // Greet user functionality
-document.body.onload = () => {
-  const greetingBox = document.querySelector('#greeting-box');
-  
-  let greetings = ['Hola', 'Hi', 'Hello', 'Good Day', 'Ahoy', 'Wagwan', 'What\'s up?', 'Howdy', 'Yo', 'How far', 'Ele way?'];
+document.body.onload = async () => {
+  const greetingBox = document.querySelector("#greeting-box");
+
+  let greetings = [
+    "Hola",
+    "Hi",
+    "Hello",
+    "Good Day",
+    "Ahoy",
+    "Wagwan",
+    "What's up?",
+    "Howdy",
+    "Yo",
+    "How far",
+    "Ele way?",
+  ];
   let min = 0;
   let max = 9;
   let index = Math.floor(Math.random() * (max - min + 1)) + min;
   let greeting = greetings[index];
- 
+
   greetingBox.textContent = greeting;
 
-  getUserData();
+  await getAndDisplayUserName();
 };
 
-const getUserData = () => {
+const getAndDisplayUserName = async () => {
   // Call on Cocobase to get the current user's data (name)
-  console.log("Running Cocobase");
+  const userName = document.querySelector("#user-name");
+
+  if (!userName.textContent) {
+    userName.textContent = "Loading...";
+  }
+
+  const capitalizeWords = (str) => {
+    return str.replace(/\b[a-z]/g, (match) => {
+      return match.toUpperCase();
+    });
+  };
+
+  const initAuth = async () => {
+    try {
+      await db.initAuth();
+      await db.getCurrentUser();
+      if (db.user) {
+        userName.textContent = capitalizeWords(db.user.data.fullName);
+      }
+    } catch (error) {
+      db.logout();
+      window.location.href = "/login.html";
+    }
+  };
+
+  await initAuth();
 };
 
 // Purchase functionality
@@ -48,12 +85,18 @@ document.querySelector(".cancel-btn").addEventListener("click", () => {
 });
 
 // Continue functionality
-document.querySelector(".continue-btn").addEventListener("click", () => {
+document.querySelector(".continue-btn").addEventListener("click", async () => {
   // Call Paystack for payment
   const email = document.querySelector(".email");
   if (email) {
     email.classList.remove("error");
     // Now when a purchase is made save the exact purchased sticker in the user's purchased stickers collection with Cocobase
+    const purchasedPack = {
+      userName: document.querySelector("#user-name").textContent,
+      packName: selectedPack
+    };
+
+    const purchasedPackDoc = await db.createDocument("purchased_stickers", purchasedPack);
     payWithPaystack(email.value, selectedPack);
   } else {
     email.classList.add("error");
@@ -88,7 +131,7 @@ document.querySelector(".close-btn").addEventListener("click", () => {
   menuBtn.style.display = "flex";
 });
 
-// Log out user functionality 
+// Log out user functionality
 document.querySelector("#logout-btn").addEventListener("click", async () => {
   const logoutBtn = document.querySelector("#logout-btn");
   logoutBtn.style.opacity = "80%";
@@ -101,7 +144,7 @@ document.querySelector("#logout-btn").addEventListener("click", async () => {
   window.location.href = "/signup.html";
 });
 
-// Log out user functionality 
+// Log out user functionality
 document.querySelector(".logout-btn").addEventListener("click", async () => {
   const logoutBtn = document.querySelector(".logout-btn");
   logoutBtn.style.opacity = "80%";
@@ -121,19 +164,23 @@ const payWithPaystack = (email, selectedPack) => {
     email: email,
     amount: 30000, // in kobo (but ₦300.00 in Naira)
     currency: "NGN",
-    callback: function(response) {
+    callback: function (response) {
       let downloadLinks = {
-        "funny-pack": "https://stickerpacksforss.vercel.app/sticker-packs/funny-pack.zip",
+        "funny-pack":
+          "https://stickerpacksforss.vercel.app/sticker-packs/funny-pack.zip",
         lol: "https://https://stickerpacksforss.vercel.app/sticker-packs/lol.zip",
-        "naija-stickers": "https://stickerpacksforss.vercel.app/sticker-packs/naija-stickers.zip",
-        "naija-vibez": "https://stickerpacksforss.vercel.app/sticker-packs/naija-vibez.zip",
-        naija4u: "https://stickerpacksforss.vercel.app/sticker-packs/naija4u.zip",
+        "naija-stickers":
+          "https://stickerpacksforss.vercel.app/sticker-packs/naija-stickers.zip",
+        "naija-vibez":
+          "https://stickerpacksforss.vercel.app/sticker-packs/naija-vibez.zip",
+        naija4u:
+          "https://stickerpacksforss.vercel.app/sticker-packs/naija4u.zip",
       };
       const selectedPackName = selectedPack;
       const downloadLink = downloadLinks[selectedPackName];
       window.location.href = `/thankyou.html?link=${downloadLink}`;
     },
-    onClose: function() {
+    onClose: function () {
       alert("Payment window closed.");
     },
   });
