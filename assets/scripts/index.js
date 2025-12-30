@@ -50,13 +50,12 @@ document.querySelector(".cancel-btn").addEventListener("click", () => {
 // Continue functionality
 document.querySelector(".continue-btn").addEventListener("click", () => {
   // Call Paystack for payment
-  const email = document.querySelector(".email").value;
+  const email = document.querySelector(".email");
   if (email) {
     email.classList.remove("error");
     // Now when a purchase is made save the exact purchased sticker in the user's purchased stickers collection with Cocobase
-    payWithPaystack(email, selectedPack);
+    payWithPaystack(email.value, selectedPack);
   } else {
-    const email = document.querySelector(".email");
     email.classList.add("error");
   }
 });
