@@ -85,18 +85,11 @@ document.querySelector(".cancel-btn").addEventListener("click", () => {
 });
 
 // Continue functionality
-document.querySelector(".continue-btn").addEventListener("click", async () => {
+document.querySelector(".continue-btn").addEventListener("click", () => {
   // Call Paystack for payment
   const email = document.querySelector(".email");
   if (email) {
     email.classList.remove("error");
-    // Now when a purchase is made save the exact purchased sticker in the user's purchased stickers collection with Cocobase
-    const purchasedPack = {
-      userName: document.querySelector("#user-name").textContent,
-      packName: selectedPack
-    };
-
-    const purchasedPackDoc = await db.createDocument("purchased_stickers", purchasedPack);
     payWithPaystack(email.value, selectedPack);
   } else {
     email.classList.add("error");
@@ -164,7 +157,7 @@ const payWithPaystack = (email, selectedPack) => {
     email: email,
     amount: 30000, // in kobo (but ₦300.00 in Naira)
     currency: "NGN",
-    callback: function (response) {
+    callback: (response) => {
       let downloadLinks = {
         "funny-pack":
           "https://stickerpacksforss.vercel.app/sticker-packs/funny-pack.zip",
@@ -178,7 +171,24 @@ const payWithPaystack = (email, selectedPack) => {
       };
       const selectedPackName = selectedPack;
       const downloadLink = downloadLinks[selectedPackName];
-      window.location.href = `/thankyou.html?link=${downloadLink}`;
+      // Now when a purchase is made save the exact purchased sticker in the user's purchased stickers collection with Cocobase
+      try {
+        const purchasedPack = {
+          userName: document.querySelector("#user-name").textContent,
+          packName: selectedPack,
+        };
+        const purchasedPackDoc = db.createDocument(
+          "purchased_stickers",
+          purchasedPack
+        );
+        if (purchasedPackDoc) {
+          setTimeout(() => {
+            window.location.href = `/thankyou.html?link=${downloadLink}`;
+          }, 5 * 1000);
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
     },
     onClose: function () {
       alert("Payment window closed.");
