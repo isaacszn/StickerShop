@@ -5,6 +5,27 @@ const db = new Cocobase({
   projectId: "ac8337c1-e1ee-44b5-b210-f27986e3fc6c",
 });
 
+let userName = "";
+
+document.querySelector("body").onload = async () => {
+  const initAuth = async () => {
+    try {
+      await db.initAuth();
+      await db.getCurrentUser();
+      if (db.user) {
+        // userName.textContent = capitalizeWords(db.user.data.fullName);
+        userName = db.user.data.fullName;
+      }
+    } catch (error) {
+      // db.logout();
+      // window.location.href = "/login.html";
+    }
+  };
+
+  await initAuth();
+  await getUserPurchasedPack();
+};
+
 // Open menu functionality
 document.querySelector(".menu-btn").addEventListener("click", () => {
   document.querySelector(".whole-page").classList.add("blur");
@@ -58,3 +79,44 @@ document.querySelector(".logout-btn").addEventListener("click", async () => {
   await db.logout();
   window.location.href = "/signup.html";
 });
+
+// Peice of code that gets the specific user's purhcased sticker pack(s)
+const getUserPurchasedPack = async () => {
+  const container = document.querySelector("#container");
+
+  if (!container.textContent.length < 0) {
+    document.querySelector(".loader").classList.remove("hide");
+    document.querySelector(".loader").classList.add("show");
+  } else {
+    document.querySelector(".loader").classList.remove("show");
+    document.querySelector(".loader").classList.add("hide");
+  }
+
+  const purchasedStickers = await db.listDocuments("purchased_stickers", {
+    where: {
+      userName: userName,
+    },
+    orderBy: "createdAt",
+    limit: 50,
+  });
+
+  purchasedStickers.forEach((purchasedSticker) => {
+    container.innerHTML += `<section class="pack">
+                    <h2 class="pack-name">${purchasedSticker.data.packName}</h2><br>
+                    <p class="bold">15 stickers</p>
+                    <br>
+                    <div class="img-stack">
+                        <img src="/assets/sticker-packs/funny-pack/STK-20241214-WA0016.webp" alt="Funny 1"
+                            class="pack-sample">
+                        <img src="/assets/sticker-packs/funny-pack/STK-20241220-WA0012.webp" alt="Funny 2"
+                            class="pack-sample">
+                        <img src="/assets/sticker-packs/funny-pack/STK-20250105-WA0000.webp" alt="Funny 3"
+                            class="pack-sample">
+                        <img src="/assets/sticker-packs/funny-pack/STK-20241230-WA0003.webp" alt="Funny 4"
+                            class="pack-sample">
+                    </div>
+                    <br>
+                    <span class="price">NGN300</span>
+                </section>`;
+  });
+};

@@ -35,6 +35,7 @@ body {
   font: 1rem "Poppins", sans-serif;
   background-color: #F8F8F8;
   margin-top: 120px;
+  margin-bottom: 30px;
 }
 
 h1 {
@@ -276,7 +277,6 @@ input[type="text"] {
 .menu li a {
   color: black;
   font-size: 1.2rem;
-  font-weight: bolder;
 }
 
 .menu li {
@@ -308,6 +308,11 @@ input[type="text"] {
 .blur {
   /* filter: blur(2px); */
   opacity: 40%;
+}
+
+.active {
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 /* Animations */

@@ -16,7 +16,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="tutorial.html">How to use StickerShop</a></li>
-                <li><a href="purchased-stickers.html">Purchased stickers</a></li>
+                <li><a href="purchased-stickers.html" class="active">Purchased stickers</a></li>
                 <li><a href="report-issue.html">Report issue</a></li>
                 <button id="logout-btn">Log out <!-- Log out icon --></button>
             </ul>
@@ -26,8 +26,8 @@
         </header>
         <main class="packs">
             <h2>Purchased Packs</h2>
-            <section class="packs-flex">
-                <section class="pack">
+            <section class="packs-flex" id="container">
+                <!-- <section class="pack">
                     <h2 class="pack-name">Funny Pack</h2><br>
                     <p class="bold">15 stickers</p>
                     <br>
@@ -43,8 +43,9 @@
                     </div>
                     <br>
                     <span class="price">NGN300</span>
-                </section>
+                </section> -->
             </section>
+            <h3 class="loader hide">Loading...</h3>
         </main>
     </section>
     <!-- Menu for mobile -->
@@ -52,7 +53,7 @@
         <ul id="menu-list" class="d-none">
             <li><a href="index.html">Home</a></li>
             <li><a href="tutorial.html">How to use StickerShop</a></li>
-            <li><a href="purchased-stickers.html">Purchased stickers</a></li>
+            <li><a href="purchased-stickers.html" class="active">Purchased stickers</a></li>
             <li><a href="report-issue.html">Report issue</a></li>
             <button class="logout-btn">Log out <!-- Log out icon --></button>
         </ul>

@@ -162,7 +162,6 @@ main {
 .menu li a {
   color: black;
   font-size: 1.2rem;
-  font-weight: bolder;
 }
 
 .menu li {
@@ -194,6 +193,11 @@ main {
 .blur {
   /* filter: blur(2px); */
   opacity: 40%;
+}
+
+.active {
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 @media screen and (min-width: 1024px) {

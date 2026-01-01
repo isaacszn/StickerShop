@@ -198,7 +198,6 @@ header {
 .menu li a {
   color: black;
   font-size: 1.2rem;
-  font-weight: bolder;
 }
 
 .menu li {
@@ -245,6 +244,24 @@ header {
 .blur {
   /* filter: blur(2px); */
   opacity: 40%;
+}
+
+.active {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.loader {
+  font-size: 1.3rem;
+  margin-top: 100px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: flex;
 }
 
 @media screen and (min-width: 1024px) {

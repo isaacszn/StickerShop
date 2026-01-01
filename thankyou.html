@@ -8,23 +8,16 @@
   <link rel="stylesheet" href="/assets/styles/thankyou.css">
 </head>
 
-<body onload="handleLoad()">
+<body>
   <nav>
     <h1><a href="#" class="logo">StickerShop</a></h1>
   </nav>
   <main>
-    <h1>Thanks for your purchase, <span id="user-name">Dear User</span>!! 🎉🙏</h1><br><br>
-    <p>Your sticker pack is ready for download, click the link here: <a href="" id="anker" download>Download sticker pack</a></p>
+    <h1>Thanks for your purchase, <span id="user-name"></span>!! 🎉🙏</h1><br><br>
+    <p>Your sticker pack is ready for download, click the link here: <a href="" id="anker" download>to download the sticker pack</a> right away.</p>
   </main>
-  <script>
-     const handleLoad = () => {
-      // Logic for getting the link via params
-      const params = new URLSearchParams(window.location.search);
-      const downloadLink = params.get('link');
-      // Logic for adding download link to the anker element
-      document.querySelector('#anker').href = downloadLink;
-     }
-  </script>
+
+  <script src="/assets/scripts/thankyou.js" type="module"></script>
 </body>
 
 </html>

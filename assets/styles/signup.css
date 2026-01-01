@@ -54,6 +54,7 @@ header {
 }
 
 main {
+    margin-top: 20px;
     width: 85vw;
     display: flex;
     justify-content: center;
@@ -204,8 +205,12 @@ input[type="text"] {
 }
 
 @media screen and (min-width: 760px) {
+    main {
+        max-width: 500px;
+    }
+
     input {
-        width: 450px;
+        width: 400px;
     }
 
     .dialog-box {
