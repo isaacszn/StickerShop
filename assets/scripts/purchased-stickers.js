@@ -8,13 +8,19 @@ const db = new Cocobase({
 let userName = "";
 
 document.querySelector("body").onload = async () => {
+  const capitalizeWords = (str) => {
+    return str.replace(/\b[a-z]/g, (match) => {
+      return match.toUpperCase();
+    });
+  };
+
   const initAuth = async () => {
     try {
       await db.initAuth();
       await db.getCurrentUser();
       if (db.user) {
         // userName.textContent = capitalizeWords(db.user.data.fullName);
-        userName = db.user.data.fullName;
+        userName = capitalizeWords(db.user.data.fullName);
       }
     } catch (error) {
       // db.logout();
@@ -94,7 +100,7 @@ const getUserPurchasedPack = async () => {
 
   const purchasedStickers = await db.listDocuments("purchased_stickers", {
     where: {
-      userName: userName,
+      userName: "John",
     },
     orderBy: "createdAt",
     limit: 50,
