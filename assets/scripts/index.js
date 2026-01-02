@@ -134,7 +134,7 @@ document.querySelector("#logout-btn").addEventListener("click", async () => {
   // Implement Cocobase to log user out
   console.log("Logging out");
   await db.logout();
-  window.location.href = "/signup.html";
+  window.location.href = "/login.html";
 });
 
 // Log out user functionality
@@ -147,7 +147,7 @@ document.querySelector(".logout-btn").addEventListener("click", async () => {
   // Implement Cocobase to log user out
   console.log("Logging out");
   await db.logout();
-  window.location.href = "/signup.html";
+  window.location.href = "/login.html";
 });
 
 // Initializing Paystack for payment
