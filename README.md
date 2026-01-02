@@ -6,13 +6,17 @@ A fun, vibrant web application or digital assets store where users (sticker love
 - HTML
 - CSS 
 - JavaScript 
-- Paystack integration (for payments)
+- Paystack (for payments)
 - Cocobase (a BaaS for my back-end server/system and DB).
 
-## 📎 Project's URL or link
-- **Base** — https://sticker-shop-tan.vercel.app
-- **Sign up page** — https://sticker-shop-tan.vercel.app/signup.html
-- **Log in page** — https://sticker-shop-tan.vercel.app/login.html
+## 📎 Project URLs or links
+- **Landing Page** - https://sticker-shop-tan.vercel.app/landing-page.html
+- **Main App** — https://sticker-shop-tan.vercel.app
+- **Sign up Page** — https://sticker-shop-tan.vercel.app/signup.html
+- **Log in Page** — https://sticker-shop-tan.vercel.app/login.html
+- **Report Page** — https://sticker-shop-tan.vercel.app/report-issue.html
+- **Purchased stickers Page** — https://sticker-shop-tan.vercel.app/purchased-stickers.html
+- **Tutorial Page** — https://sticker-shop-tan.vercel.app/tutorial.html
 
 ## ⚙️ Features
-1. **Authentication** - A simple sign up and log in page for user authentication.
+1. **Authentication** - A simple sign up and log in page for smooth user authentication.
