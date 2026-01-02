@@ -5,11 +5,15 @@ const db = new Cocobase({
   projectId: "ac8337c1-e1ee-44b5-b210-f27986e3fc6c",
 });
 
-
 // Code for sending the report
 document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
+  const capitalizeWords = (str) => {
+    return str.replace(/\b[a-z]/g, (match) => {
+      return match.toUpperCase();
+    });
+  };
   const btn = document.querySelector(".form-btn");
   const originalContent = btn.textContent;
   btn.textContent = "Sending...";
@@ -17,45 +21,47 @@ document.querySelector("form").addEventListener("submit", async (e) => {
   const dialogBox = document.querySelector(".dialog-box");
   const message = document.querySelector(".message");
   const formData = new FormData(e.target);
-  const fullName = formData.get("full-name");
+  const fullName = capitalizeWords(formData.get("full-name"));
   const reportMessage = formData.get("report-message");
-  console.log(fullName, reportMessage);
 
-  // Implement Cocobase here to create a report collection
-//   try {
-//     await db.login(email, password);
-//     if (await db.isAuthenticated()) {
-//       console.log("Logged in successfully");
-//       dialogBox.classList.remove("hide");
-//       dialogBox.classList.add("show");
-//       dialogBox.classList.remove("error");
-//       dialogBox.classList.add("success");
-//       message.textContent = "Logged in successfully. You'll be redirected to the main page!!"; // Add success emoji
-//       btn.textContent = originalContent;
-//       btn.classList.remove("disabled");
-//     }
-//   } catch (error) {
-//     console.log(error.message);
-//     dialogBox.classList.remove("hide");
-//     dialogBox.classList.add("show");
-//     dialogBox.classList.remove("success");
-//     dialogBox.classList.add("error");
-//     if (error.message === "Failed to fetch") {
-//       message.textContent =
-//         "No internet connection. Turn on Wi-Fi or mobile data!!"; // Add warning emoji
-//     } else {
-//       message.textContent = error.message; // Work on triming the message response to what I want ("data" property)  
-//     }
-//     btn.textContent = originalContent;
-//     btn.classList.remove("disabled");
-//   }
+  try {
+    const reportData = {
+      fullName: fullName,
+      reportMessage: reportMessage,
+    };
+    const report = await db.createDocument("reports", reportData);
+    if (report) {
+      dialogBox.classList.remove("hide");
+      dialogBox.classList.add("show");
+      dialogBox.classList.remove("error");
+      dialogBox.classList.add("success");
+      message.textContent =
+        "✅ Your report has been sent successfully. Thank you, we'll look into that!!";
+      btn.textContent = originalContent;
+      btn.classList.remove("disabled");
+    }
+  } catch (error) {
+    console.log(error.message);
+    dialogBox.classList.remove("hide");
+    dialogBox.classList.add("show");
+    dialogBox.classList.remove("success");
+    dialogBox.classList.add("error");
+    if (error.message === "Failed to fetch") {
+      message.textContent =
+        "⚠️ No internet connection. Turn on Wi-Fi or mobile data!!";
+    } else {
+      message.textContent = `❌ ${error.message}`; // Work on triming the message response to what I want ("data" property)
+    }
+    btn.textContent = originalContent;
+    btn.classList.remove("disabled");
+  }
 });
 
-// document.querySelector(".hide-btn").addEventListener("click", () => {
-//   const dialogBox = document.querySelector(".dialog-box");
-//   dialogBox.classList.remove("show");  
-//   dialogBox.classList.add("hide");
-// });
+document.querySelector(".hide-btn").addEventListener("click", () => {
+  const dialogBox = document.querySelector(".dialog-box");
+  dialogBox.classList.remove("show");
+  dialogBox.classList.add("hide");
+});
 
 // Open menu functionality
 document.querySelector(".menu-btn").addEventListener("click", () => {
@@ -85,7 +91,7 @@ document.querySelector(".close-btn").addEventListener("click", () => {
   menuBtn.style.display = "flex";
 });
 
-// Log out user functionality 
+// Log out user functionality
 document.querySelector("#logout-btn").addEventListener("click", async () => {
   const logoutBtn = document.querySelector("#logout-btn");
   logoutBtn.style.opacity = "80%";
@@ -98,7 +104,7 @@ document.querySelector("#logout-btn").addEventListener("click", async () => {
   window.location.href = "/login.html";
 });
 
-// Log out user functionality 
+// Log out user functionality
 document.querySelector(".logout-btn").addEventListener("click", async () => {
   const logoutBtn = document.querySelector(".logout-btn");
   logoutBtn.style.opacity = "80%";

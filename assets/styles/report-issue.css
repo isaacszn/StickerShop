@@ -48,7 +48,7 @@ main {
   align-items: center;
   flex-direction: column;
   background-color: var(--vibrant-yellow);
-  width: 80%;
+  width: 85%;
   height: 550px;
   padding: 1rem;
   padding-top: 1.5rem;
@@ -121,14 +121,15 @@ input[type="text"] {
 
 .dialog-box {
     width: 80%;
-    display:flex;
+    display: flex;
     justify-content: space-around;
     align-items: center;
     gap: 10%;
     padding: 10px;
     border: thin solid black;
     position: fixed;
-    top: 40px;
+    top: 100px;
+    left: 10vw;
     transition: all ease 3s;
     animation: pop 0.5s  ease;
 }
@@ -169,6 +170,16 @@ input[type="text"] {
 .disabled {
     user-select: none;
     opacity: 70%;
+}
+
+/* Animations */
+@keyframes pop {
+    0% {
+        transform: scale(80%);
+    }
+    100% {
+        transform: scale(100%);
+    }
 }
 
 .header {

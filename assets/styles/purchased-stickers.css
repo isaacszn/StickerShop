@@ -88,6 +88,11 @@ header {
   background-color: var(--vibrant-yellow);
   min-height: 100vh;
   padding: 25px;
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
 }
 
 .packs-flex {
@@ -252,8 +257,10 @@ header {
 }
 
 .loader {
+  display: block;
   font-size: 1.3rem;
-  margin-top: 100px;
+  margin: 100px auto 20px auto;
+  text-align: center;
 }
 
 .hide {

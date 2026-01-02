@@ -90,7 +90,7 @@ document.querySelector(".logout-btn").addEventListener("click", async () => {
 const getUserPurchasedPack = async () => {
   const container = document.querySelector("#container");
 
-  if (!container.textContent.length < 0) {
+  if (container.innerHTML) {
     document.querySelector(".loader").classList.remove("hide");
     document.querySelector(".loader").classList.add("show");
   } else {
@@ -100,7 +100,7 @@ const getUserPurchasedPack = async () => {
 
   const purchasedStickers = await db.listDocuments("purchased_stickers", {
     where: {
-      userName: "John",
+      userName: userName,
     },
     orderBy: "createdAt",
     limit: 50,

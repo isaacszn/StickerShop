@@ -31,14 +31,18 @@
   box-sizing: border-box;
 }
 
-button {
-  cursor: pointer;
-}
-
 body {
   font: 1rem "Poppins", sans-serif;
   background-color: #F8F8F8;
   margin-top: 150px;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 70%;
 }
 
 h3 {
@@ -74,11 +78,13 @@ header {
   margin: auto;
   font: 1.7rem "Barriecito", sans-serif;
   margin-bottom: 60px;
+  text-align: center;
 }
 
 footer {
-  margin-top: 120px;
+  margin-top: 80px;
   text-align: center;
+  font-weight: bold;
 }
 
 .get-started-btn {
@@ -136,7 +142,7 @@ footer {
 
 main {
   background-color: var(--vibrant-yellow);
-  min-height: 100vh;
+  /* min-height: 100vh; */
   padding: 25px;
 }
 
@@ -251,6 +257,10 @@ main h2 {
   font: 1rem monospace;
   font-weight: bold;
   color: var(--tomato-red);
+}
+
+.fun {
+  font-size: 1.2rem;
 }
 
 @media screen and (min-width: 1024px) {
