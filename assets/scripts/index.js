@@ -37,10 +37,7 @@ document.body.onload = async () => {
 const getAndDisplayUserName = async () => {
   // Call on Cocobase to get the current user's data (name)
   const userName = document.querySelector("#user-name");
-
-  if (!userName.textContent) {
-    userName.textContent = "Loading...";
-  }
+  const loader = document.querySelector(".loader");
 
   const capitalizeWords = (str) => {
     return str.replace(/\b[a-z]/g, (match) => {
@@ -53,6 +50,8 @@ const getAndDisplayUserName = async () => {
       await db.initAuth();
       await db.getCurrentUser();
       if (db.user) {
+        loader.classList.remove("show");
+        loader.classList.add("hide");
         userName.textContent = capitalizeWords(db.user.data.fullName);
       }
     } catch (error) {
