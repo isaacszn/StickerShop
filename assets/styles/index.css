@@ -367,6 +367,10 @@ input[type="text"]:focus, input[type="email"]:focus {
     margin-top: 130px;
   }
 
+  .greeting {
+    margin-left: 60px;
+  }
+
   .logo {
     display: flex;
     align-items: center;
@@ -375,6 +379,10 @@ input[type="text"]:focus, input[type="email"]:focus {
 
   .whole-page {
     opacity: 100% !important;
+  }
+
+  .feautured-packs-flex {
+    gap: 4rem;
   }
 
   .pack {

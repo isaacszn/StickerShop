@@ -9,11 +9,6 @@ const db = new Cocobase({
 document.querySelector("form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const capitalizeWords = (str) => {
-    return str.replace(/\b[a-z]/g, (match) => {
-      return match.toUpperCase();
-    });
-  };
   const btn = document.querySelector(".form-btn");
   const originalContent = btn.textContent;
   btn.textContent = "Sending...";
@@ -21,8 +16,30 @@ document.querySelector("form").addEventListener("submit", async (e) => {
   const dialogBox = document.querySelector(".dialog-box");
   const message = document.querySelector(".message");
   const formData = new FormData(e.target);
-  const fullName = capitalizeWords(formData.get("full-name"));
   const reportMessage = formData.get("report-message");
+  let fullName = "";
+
+  const capitalizeWords = (str) => {
+    return str.replace(/\b[a-z]/g, (match) => {
+      return match.toUpperCase();
+    });
+  };
+
+  // Get user's fullname from Cocobase
+  const initAuth = async () => {
+    try {
+      await db.initAuth();
+      await db.getCurrentUser();
+      if (db.user) {
+        fullName = capitalizeWords(db.user.data.fullName);
+      }
+    } catch (error) {
+      db.logout();
+      window.location.href = "/login.html";
+    }
+  };
+
+  await initAuth();
 
   try {
     const reportData = {

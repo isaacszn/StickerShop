@@ -290,6 +290,10 @@ header {
     margin: auto;
   }
 
+  .packs-flex {
+    gap: 4rem;
+  }
+
   header {
     height: 10vh;
   }
